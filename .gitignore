@@ -1,0 +1,6 @@
+assets/snowboy/*
+assets/models/*
+.venv
+venv
+.vscode
+__pycache__
