@@ -1,0 +1,15 @@
+VOSK_MODEL = "assets/models/vosk-api"
+
+HOTWORD_MODELS = [
+    "assets/models/meeseeks.pmdl",
+]
+
+SENSITIVITY = 0.4
+
+COMMAND_MODE_DURATION = 30
+
+PLUGINS_DIR = "plugins"
+
+PLUGINS = [
+    "alarm"
+]
