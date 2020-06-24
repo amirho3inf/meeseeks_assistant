@@ -1,8 +1,7 @@
-from assistant import assistant
-from filters import contains
+from assistant import assistant, filters
 
 
-@assistant.register_handler(contains("set alarm"))
+@assistant.register_handler(filters.contains("set alarm"))
 def handle(cmd):
     print(cmd)
 
@@ -11,4 +10,4 @@ def handle2(cmd):
     print(cmd)
 
 
-assistant.add_handler(handle2, contains("delete alarm"))
+assistant.add_handler(handle2, filters.contains("delete alarm"))
