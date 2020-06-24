@@ -8,6 +8,10 @@ SENSITIVITY = 0.4
 
 COMMAND_MODE_DURATION = 30
 
+FLITEVOX_FILE = "assets/models/cmu_us_bdl.flitevox"
+
+AUDIOS_DIR = "assets/audios"
+
 PLUGINS_DIR = "plugins"
 
 PLUGINS = [
