@@ -60,6 +60,7 @@ class Meeseeks(object):
         def deco(func):
             handler = self._make_filtered_handler(func, filters)
             self.handlers.append(handler)
+            return func
         return deco
 
     def handle_command(self, cmd):
