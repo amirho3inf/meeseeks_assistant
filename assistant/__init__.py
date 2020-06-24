@@ -11,6 +11,6 @@ assistant = Meeseeks(
 
 
 __all__ = [
-    assistant,
-    filters
+    "assistant",
+    "filters"
 ]
