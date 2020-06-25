@@ -31,6 +31,7 @@ class Meeseeks(object):
         self.hotword_said = True
 
     def hotword_check(self):
+        print('+ Switch to hotword mode')
         self.hotword_said = False
         self.hotword_detector.start(detected_callback=self.on_hotword,
                                     interrupt_check=self.hotword_interrupt_check,
@@ -73,6 +74,7 @@ class Meeseeks(object):
         return its_over or self.interrupted
 
     def command_check(self):
+        print('+ Switch to command mode')
         self._cmd_start_t = time.time()
         speech_recognizer = KaldiRecognizer(self.vosk_model, 16000)
         p = pyaudio.PyAudio()
@@ -86,6 +88,7 @@ class Meeseeks(object):
             if speech_recognizer.AcceptWaveform(data):
                 jdata = json.loads(speech_recognizer.Result())
                 cmd = jdata.get("text")
+                print("CMD:", cmd, end=f"\n-----{'-'*len(cmd)}\n")
                 if cmd:
                     self.handle_command(cmd)
         stream.stop_stream()
