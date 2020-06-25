@@ -47,7 +47,7 @@ class Meeseeks(object):
                     kwargs.update(ret)
                 if ret is False:
                     return False
-            func(cmd, **kwargs)
+            return func(cmd, **kwargs)
         return inner
 
     def add_handler(self, func, *filters):
