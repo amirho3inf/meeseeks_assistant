@@ -1,2 +1,4 @@
+playsound==1.2.2
 PyAudio==0.2.11
 vosk==0.3.7
+word2number==1.1
