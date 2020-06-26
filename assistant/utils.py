@@ -4,7 +4,8 @@ from playsound import playsound
 
 
 def tts(text):
-    cmd = ['flite', '-voice', config.FLITEVOX_FILE, '-t', text]
+    cmd = ['flite', '-voice', config.FLITEVOX_FILE,
+           '-t', text, '--setf', 'duration_stretch=1.3']
     subprocess.run(cmd)
 
 
