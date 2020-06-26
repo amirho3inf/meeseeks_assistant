@@ -14,6 +14,7 @@ AUDIOS_DIR = "assets/audios"
 
 PLUGINS_DIR = "plugins"
 
+# Arrangement is important for priority
 PLUGINS = [
-    "alarm"
+    "main",
 ]
