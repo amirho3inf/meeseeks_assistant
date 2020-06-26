@@ -17,5 +17,6 @@ PLUGINS_DIR = "plugins"
 # Arrangement is important for priority
 PLUGINS = [
     "main",
+    "timer",
     "time",
 ]
