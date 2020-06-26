@@ -20,6 +20,9 @@ class Meeseeks(object):
         self.command_mode_time = command_mode_time
         signal.signal(signal.SIGINT, self.on_signal)
         self.handlers = []
+        self._cmd_start_t = 0
+        self._cmd_start_f = lambda: None
+        self._cmd_stop_f = lambda: None
 
     def on_signal(self, signal, frame):
         self.interrupted = True
@@ -67,6 +70,7 @@ class Meeseeks(object):
     def handle_command(self, cmd):
         for handler in self.handlers:
             if handler(cmd) is True:
+                self.stop_command_check()
                 return
 
     def command_interrupt_check(self):
@@ -81,6 +85,7 @@ class Meeseeks(object):
         stream = p.open(format=pyaudio.paInt16, channels=1,
                         rate=16000, input=True, frames_per_buffer=8000)
         stream.start_stream()
+        self._cmd_start_f()
         while not self.command_interrupt_check():
             data = stream.read(4000)
             if len(data) == 0:
@@ -92,6 +97,22 @@ class Meeseeks(object):
                 if cmd:
                     self.handle_command(cmd)
         stream.stop_stream()
+        self._cmd_stop_f()
+
+    def stop_command_check(self):
+        self._cmd_start_t = 0
+
+    def on_command_mode_start(self, func):
+        if callable(func) is False:
+            raise Exception("Arg must be callable")
+        self._cmd_start_f = func
+        return func
+
+    def on_command_mode_stop(self, func):
+        if callable(func) is False:
+            raise Exception("Arg must be callable")
+        self._cmd_stop_f = func
+        return func
 
     def run(self):
         while self.hotword_check() and not self.interrupted:
