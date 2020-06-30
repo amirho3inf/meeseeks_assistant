@@ -1,12 +1,11 @@
-from assistant import assistant, filters, utils
-
-
 """
 Command:                Description:
 
 stop this               stops command mode
 go to sleep             stops command mode
 """
+
+from assistant import assistant, filters, utils
 
 
 @assistant.register_handler(filters.equals('stop this'))

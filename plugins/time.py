@@ -1,12 +1,11 @@
-from assistant import assistant, filters, utils
-import time
-
-
 """
 Command:                Description:
 
 what time is it         tells the local time
 """
+
+from assistant import assistant, filters, utils
+import time
 
 
 @assistant.register_handler(

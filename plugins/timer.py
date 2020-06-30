@@ -1,9 +1,3 @@
-from assistant import assistant, filters, utils
-from threading import Thread, Event
-from word2number import w2n
-import time
-
-
 """
 Command:                      Description:
 
@@ -11,6 +5,12 @@ time it for two minutes       set a timer for 2 minutes and stops command mode
 timer for fifty seconds       set a timer for 50 minutes and stops command mode
 stop timer                    stops the timer in progress
 """
+
+from assistant import assistant, filters, utils
+from threading import Thread, Event
+from word2number import w2n
+import time
+
 
 TIME_DURATION_UNITS = (
     ('hour', 60*60),
