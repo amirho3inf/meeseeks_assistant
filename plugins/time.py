@@ -13,6 +13,6 @@ import time
     filters.contains('time')
 )
 def what_time(cmd):
-    now = time.strftime("%I:%M")
+    now = time.strftime("It's %I:%M")
     utils.tts(now)
     return True
