@@ -1,5 +1,6 @@
 from .meeseeks import Meeseeks
 from . import filters
+from . import utils
 import config
 
 assistant = Meeseeks(
@@ -12,5 +13,6 @@ assistant = Meeseeks(
 
 __all__ = [
     "assistant",
-    "filters"
+    "filters",
+    "utils"
 ]
