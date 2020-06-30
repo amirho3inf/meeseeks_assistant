@@ -90,15 +90,24 @@ class Meeseeks(object):
         self._cmd_stop_f()
 
     def stop_command_check(self):
+        """
+        Stop command mode and switch to hotword mode
+        """
         self._cmd_start_t = 0
 
     def add_handler(self, func, *filters):
+        """
+        Add handler for commands
+        """
         if callable(func) is False:
             raise Exception("Arg must be callable")
         handler = self._make_filtered_handler(func, filters)
         self.handlers.append(handler)
 
     def register_handler(self, *filters):
+        """
+        Decorator for commands handler
+        """
         def deco(func):
             handler = self._make_filtered_handler(func, filters)
             self.handlers.append(handler)
@@ -106,17 +115,26 @@ class Meeseeks(object):
         return deco
 
     def on_command_mode_start(self, func):
+        """
+        Add a function to run at command mode start
+        """
         if callable(func) is False:
             raise Exception("Arg must be callable")
         self._cmd_start_f = func
         return func
 
     def on_command_mode_stop(self, func):
+        """
+        Add a function to run at command mode stop
+        """
         if callable(func) is False:
             raise Exception("Arg must be callable")
         self._cmd_stop_f = func
         return func
 
     def run(self):
+        """
+        Run the assistant
+        """
         while self._hotword_check() and not self.interrupted:
             self._command_check()
