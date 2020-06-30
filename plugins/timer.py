@@ -107,4 +107,4 @@ def timer(cmd, regexp):
 def stop_timer(cmd):
     TIMER_EVENT.clear()
     utils.play("that's okay.wav")
-    return False
+    return True
