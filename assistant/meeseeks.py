@@ -87,6 +87,7 @@ class Meeseeks(object):
                 if cmd:
                     self._handle_command(cmd)
         stream.stop_stream()
+        stream.close()
         self._cmd_stop_f()
 
     def stop_command_check(self):
